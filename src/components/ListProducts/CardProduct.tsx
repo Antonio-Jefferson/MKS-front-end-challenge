@@ -1,6 +1,7 @@
 import Image from "next/image";
 import icon from '../../assets/images/shopping-bag.png';
 import * as S from './styles';
+import { addToCart } from "@/src/utils/cartUltils";
 
 type Product = {
   id: number;
@@ -16,6 +17,10 @@ interface CardProductProps {
 }
 
 export default function CardProduct({ product }: CardProductProps){
+  const handleBuyClick = () => {
+    addToCart(product);
+  };
+
   return (
     <S.Container>
       <S.InfoProduct>
@@ -33,7 +38,7 @@ export default function CardProduct({ product }: CardProductProps){
           </S.Price>
           <p>{product.description}</p>
       </S.InfoProduct>
-      <S.Button>
+      <S.Button  onClick={handleBuyClick} >
         <Image src={icon} alt="icon" />
         <p>COMPRAR</p>
       </S.Button>
