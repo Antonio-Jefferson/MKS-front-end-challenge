@@ -26,6 +26,10 @@ export const Header = styled.div`
     font-size: 27px;
     font-weight: 700;
   }
+
+  div{
+    cursor: pointer;
+  }
 `;
 
 export const ListProductCart = styled.div`

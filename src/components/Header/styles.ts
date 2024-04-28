@@ -34,4 +34,8 @@ export const CartCounter = styled.span`
     align-items: center;
     gap: 10px;
   }
+
+  :hover{
+    cursor: pointer;
+  }
 `;
