@@ -4,21 +4,24 @@ type Product = {
   brand: string;
   photo: string;
   description: string;
+  quantity: number,
   price: number;
 }
 
 export const addToCart = (product: Product) => {
   const existingProducts: Product[] = JSON.parse(localStorage.getItem('products') || '[]');
 
-  const isProductExists = existingProducts.some((existingProduct) => existingProduct.id === product.id);
+  const existingProductIndex = existingProducts.findIndex((existingProduct) => existingProduct.id === product.id);
 
-  if (isProductExists) {
-    //alert('Este produto já foi adicionado ao carrinho!');
+  if (existingProductIndex !== -1) {
+    existingProducts[existingProductIndex].quantity = (existingProducts[existingProductIndex].quantity || 1) + 1;
   } else {
+    product.quantity = 1;
     existingProducts.push(product);
-    localStorage.setItem('products', JSON.stringify(existingProducts));
   }
+  localStorage.setItem('products', JSON.stringify(existingProducts));
 };
+
 
 export const getCartProducts = (): Product[] => {
   const existingProductsJSON = localStorage.getItem('products');
