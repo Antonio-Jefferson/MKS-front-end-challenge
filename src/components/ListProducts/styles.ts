@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+  position: relative;
   width: 235px;
   height: 295px;
   border-radius: 8px;
-  box-shadow: rgba(0, 0, 0, 0.14);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.14);
 
   div{
     padding: 12px 14px;
@@ -52,6 +53,9 @@ export const Price = styled.div`
 `;
 
 export const Button = styled.button`
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
   width: 100%;
   height: 31px;
   background-color: var(--primary);
@@ -65,6 +69,10 @@ export const Button = styled.button`
   color: #fff;
   font-size: 14px;
   font-weight: 600;
+  cursor: pointer;
+  :hover {
+    opacity: 0.6;
+  }
 `;
 
 export const Main = styled.div`

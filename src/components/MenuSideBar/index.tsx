@@ -4,6 +4,7 @@ import * as S from './style';
 import Image from 'next/image';
 import iconClose from '../../assets/icons/Close_cart.png';
 import { getCartProducts } from '@/src/utils/cartUltils';
+import { useAnimation, motion } from 'framer-motion';
 
 interface IProps {
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
@@ -19,11 +20,22 @@ type Product = {
 
 export default function MenuSideBar({setIsOpen}: IProps) {
   const [cartProducts, setCartProducts] = useState<Product[]>([]);
+  const controls = useAnimation();
 
   useEffect(() => {
     const productsFromLocalStorage = getCartProducts();
     setCartProducts(productsFromLocalStorage);
   }, []);
+
+  useEffect(() => {
+    controls.start((i) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: i * 0.3,
+      },
+    }));
+  }, [cartProducts, controls]);
 
   return (
     <S.Container>
@@ -39,8 +51,15 @@ export default function MenuSideBar({setIsOpen}: IProps) {
           </div>
         </S.Header>
         <S.ListProductCart>
-          {cartProducts.map((product) => (
-            <ProductCart key={product.id} product={product} />
+          {cartProducts.map((product, index) => (
+            <motion.div
+              key={product.id}
+              custom={index}
+              initial={{ opacity: 0, y: 50 }}
+              animate={controls}
+            >
+              <ProductCart product={product} />
+            </motion.div>
           ))}
         </S.ListProductCart>
         <S.Total>

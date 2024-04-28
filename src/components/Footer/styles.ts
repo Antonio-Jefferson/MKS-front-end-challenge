@@ -14,4 +14,7 @@ export const FooterContainer = styled.div`
     font-weight: 400;
     color: #000;
   }
+  position: absolute;
+  bottom: 0;
+  left: 0px;
 `;
