@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   width: 486px;
-  height: 100vh;
+  height: 100%;
 
   position: absolute;
   right: 0px;
@@ -36,9 +36,18 @@ export const ListProductCart = styled.div`
   display: flex;
   flex-direction: column;
   gap: 28px;
+  min-height: 700px;
+  max-height: 700px;
+  padding: 20px;
+  overflow-y: auto;
 
-  height: 700px;
-  padding: 20px 0px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    width: 0;
+    display: none;
+  }
 `;
 
 export const Total = styled.div`

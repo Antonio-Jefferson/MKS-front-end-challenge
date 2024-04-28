@@ -2,21 +2,36 @@ import React from 'react';
 import CardProduct from './CardProduct';
 import { useFetchData } from '../../services/homeService';
 import * as S from './styles';
+import CardSkeleton from './CardSkeleton';
+import { SkeletonTheme } from 'react-loading-skeleton';
 
 type Product = {
   id: number;
   name: string;
   brand: string;
   photo: string;
+  quantity: number;
   description: string;
   price: number;
 }
 
 
-const ListProducts = () => {
+export default function ListProducts() {
   const { data, isLoading, error } = useFetchData();
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) {
+    return (
+      <SkeletonTheme baseColor="#949191" highlightColor="#aeaaaa">
+        <S.Main>
+          <S.List>
+            {[...Array(8)].map((_, index) => (
+              <CardSkeleton key={index} />
+            ))}
+          </S.List>
+        </S.Main>
+      </SkeletonTheme>
+    );
+  }
 
   if (error) return <div>Error: {error.toString()}</div>;
 
@@ -30,6 +45,3 @@ const ListProducts = () => {
     </S.Main>
   );
 };
-
-export default ListProducts;
-
