@@ -1,4 +1,4 @@
-'use client'
+import React from "react";
 import Image from "next/image";
 import cart from '../../assets/icons/cart.png'
 import logo from '../../assets/images/MKS.png'
