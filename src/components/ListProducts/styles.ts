@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   width: 235px;
-  height: 285px;
+  height: 295px;
   border-radius: 8px;
   box-shadow: rgba(0, 0, 0, 0.14);
 
@@ -17,6 +17,7 @@ export const Container = styled.div`
 export const InfoProduct = styled.div`
   padding: 4px;
   p{
+    margin: 8px 0px;
     font-size: 10px;
     font-weight: 300;
   }
@@ -24,10 +25,18 @@ export const InfoProduct = styled.div`
 
 export const Price = styled.div`
   display: flex;
+  justify-content: space-between;
   h3{
-    height: auto;
+    height: 35px;
     font-size: 16px;
     font-weight: 400;
+    padding: 4px 0px;
+
+    display: -webkit-box;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
   span{
     width: 78px;
