@@ -20,4 +20,29 @@ export const addToCart = (product: Product) => {
   }
 };
 
+export const getCartProducts = (): Product[] => {
+  const existingProductsJSON = localStorage.getItem('products');
+
+  if (existingProductsJSON) {
+    return JSON.parse(existingProductsJSON);
+  } else {
+    return [];
+  }
+};
+
+export const removeCartItem = (productId: number): void => {
+  const existingProductsJSON = localStorage.getItem('products');
+
+  if (existingProductsJSON) {
+
+    const existingProducts: Product[] = JSON.parse(existingProductsJSON);
+
+    const updatedProducts = existingProducts.filter((product) => product.id !== productId);
+
+    localStorage.setItem('products', JSON.stringify(updatedProducts));
+  } else {
+    alert('Não há produtos no carrinho!');
+  }
+};
+
 

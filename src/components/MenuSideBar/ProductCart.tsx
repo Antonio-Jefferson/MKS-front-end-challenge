@@ -2,13 +2,31 @@ import Image from 'next/image';
 import productImage from '../../assets/images/macbook-pro.png'
 import iconClose from '../../assets/icons/Close_cart.png';
 import * as S from './style'
+import { removeCartItem } from '@/src/utils/cartUltils';
 
-export default function ProductCart() {
+type Product = {
+  id: number;
+  name: string;
+  brand: string;
+  photo: string;
+  description: string;
+  price: number;
+}
+
+interface ProductCartProps {
+  product: Product;
+}
+
+export default function ProductCart({product}: ProductCartProps) {
+  const handleRemoveFromCart = () => {
+    removeCartItem(product.id);
+  };
+
   return (
     <S.ContainerProduct>
       <S.ContainerImage>
-        <Image src={productImage} alt='image produto' />
-        <p>Apple Watch Series 4 GPS</p>
+        <Image src={product.photo} alt='image produto' width={80} height={40}/>
+        <p>{product.name}</p>
       </S.ContainerImage>
       <S.SessionQTD>
         <p>Qtd:</p>
@@ -19,9 +37,9 @@ export default function ProductCart() {
         </div>
       </S.SessionQTD>
       <S.Price>
-        R$399
+        R${product.price}
       </S.Price>
-      <S.IconCloseProduct>
+      <S.IconCloseProduct onClick={handleRemoveFromCart}>
         <Image
           src={iconClose}
           alt='Close'
