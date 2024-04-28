@@ -1,7 +1,7 @@
 # MKS-Front-End
 
 ### Como rodar o projeto:
- Para iniciar, certifique-se de ter o Node.js instalado em sua máquina. Em seguida, execute o comando abaixo para instalar as dependências: ```bash npm install ```
+ Para iniciar, certifique-se de ter o Node.js instalado em sua máquina. Em seguida, execute o comando abaixo para instalar as dependências: ``` npm install ```
 
 executar o projeto:
 ```bash
