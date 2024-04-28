@@ -6,9 +6,6 @@ const nextConfig = {
   images: {
     domains: ['mks-sistemas.nyc3.digitaloceanspaces.com'],
   },
-  experimental: {
-    babelPlugin: true,
-  },
 };
 
 export default nextConfig;
