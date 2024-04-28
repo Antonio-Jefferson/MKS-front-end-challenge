@@ -13,7 +13,7 @@ export const addToCart = (product: Product) => {
   const isProductExists = existingProducts.some((existingProduct) => existingProduct.id === product.id);
 
   if (isProductExists) {
-    alert('Este produto já foi adicionado ao carrinho!');
+    //alert('Este produto já foi adicionado ao carrinho!');
   } else {
     existingProducts.push(product);
     localStorage.setItem('products', JSON.stringify(existingProducts));
